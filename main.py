@@ -41,14 +41,16 @@ def RUNMAIN():
         status = re.findall(r'<div id="status">(.*?)</div>',str(container))
         return status
 
-    for i in range(1, 20):
-        time.sleep(5)
+    #for i in range(1, 20):
+        #time.sleep(5)
+        #stat = GETSTAT()
+        #print(stat)
+    for i in range(1, 999999999999):
         stat = GETSTAT()
         print(stat)
+        time.sleep(10)
+        driver.refresh()
 
-    driver.close()
-    driver.quit()
+RUNMAIN()
 
-while True:
-    time.sleep(.01)
-    RUNMAIN()
+
