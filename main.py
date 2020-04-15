@@ -35,21 +35,16 @@ def RUNMAIN():
 
     driver.switch_to_window(driver.window_handles[1])
 
-    def GETSTAT():
-        bsObj = BeautifulSoup(driver.page_source,'html.parser')
-        container = bsObj.find('div', id='container') #for getting status
-        status = re.findall(r'<div id="status">(.*?)</div>',str(container))
-        return status
+    #def GETSTAT():
+        #bsObj = BeautifulSoup(driver.page_source,'html.parser')
+        #container = bsObj.find('div', id='container') #for getting status
+        #status = re.findall(r'<div id="status">(.*?)</div>',str(container))
+        #return status
 
     #for i in range(1, 20):
         #time.sleep(5)
         #stat = GETSTAT()
         #print(stat)
-    for i in range(1, 999999999999):
-        stat = GETSTAT()
-        print(stat)
-        time.sleep(10)
-        driver.refresh()
 
 RUNMAIN()
 
