@@ -12,7 +12,7 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-gpu")
+#chrome_options.add_argument("--disable-gpu")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 print("Active")
@@ -28,13 +28,13 @@ def RUNMAIN():
     driver.find_element_by_id ("password").send_keys("kallan1914")
     driver.find_element_by_id("login_button").click()
 
-    time.sleep(5)
-    driver.execute_script('''window.open("https://onlinesequencer.net/","_blank");''')
-    time.sleep(5)
-    driver.execute_script('''window.open("https://onlinesequencer.net/forum/chat_frame.php","_blank");''')
-    time.sleep(5)
+    #time.sleep(5)
+    #driver.execute_script('''window.open("https://onlinesequencer.net/","_blank");''')
+    #time.sleep(5)
+    #driver.execute_script('''window.open("https://onlinesequencer.net/forum/chat_frame.php","_blank");''')
+    #time.sleep(5)
 
-    driver.switch_to_window(driver.window_handles[1])
+    #driver.switch_to_window(driver.window_handles[1])
 
     #def GETSTAT():
         #bsObj = BeautifulSoup(driver.page_source,'html.parser')
