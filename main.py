@@ -6,6 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import os
+from datetime import datetime
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -13,12 +14,12 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 #chrome_options.add_argument("--disable-gpu")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+#driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 print("Active. . .")
 
 def RUNMAIN():
-    #driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get("https://onlinesequencer.net/")
     time.sleep(2)
     #print(driver.page_source)
@@ -40,6 +41,17 @@ def RUNMAIN():
     time.sleep(2)
     print("Check if bot is in chat. Also window handle set to ^")
     driver.switch_to_window(driver.window_handles[1])
+    time.sleep(1)
+
+    def SENDCHATMSG(msgV):
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        driver.find_element_by_id ("message").send_keys(msgV +" "+str(current_time))
+        time.sleep(.5)
+        sendButton = driver.find_element_by_id("chatbutton")
+        ActionChains(driver).move_to_element(sendButton).click(sendButton).perform()
+
+    SENDCHATMSG("--> Chat Bot Activated @ :")
 
     def GETSTAT():
         bsObj = BeautifulSoup(driver.page_source,'html.parser')
@@ -49,9 +61,13 @@ def RUNMAIN():
 
     for i in range(1, 9999):
         time.sleep(5)
-        driver.execute_script("location.reload()")
         stat = GETSTAT()
         print(stat)
+        #personToFind = "[Mod] Void"
+        #if personToFind in str(stat):
+            #SENDCHATMSG("Void is currently in chat!")
+            #time.sleep(1)
+        driver.execute_script("location.reload()")
 
 RUNMAIN()
 
