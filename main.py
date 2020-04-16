@@ -49,6 +49,7 @@ def RUNMAIN():
 
     for i in range(1, 9999):
         time.sleep(5)
+        driver.execute_script("location.reload()")
         stat = GETSTAT()
         print(stat)
 
