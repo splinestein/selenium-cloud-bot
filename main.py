@@ -15,38 +15,42 @@ chrome_options.add_argument("--no-sandbox")
 #chrome_options.add_argument("--disable-gpu")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
-print("Active")
+print("Active. . .")
 
 def RUNMAIN():
     #driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get("https://onlinesequencer.net/")
-    #time.sleep(2)
-    print(driver.page_source)
-    #button = driver.find_element_by_id("login_button")
+    time.sleep(2)
+    #print(driver.page_source)
+    print("Got through. Logging in. . .")
+    button = driver.find_element_by_id("login_button")
 
-    #ActionChains(driver).move_to_element(button).click(button).perform()
-    #driver.find_element_by_id("username").send_keys("Void-BOT")
-    #driver.find_element_by_id ("password").send_keys("kallan1914")
-    #driver.find_element_by_id("login_button").click()
+    ActionChains(driver).move_to_element(button).click(button).perform()
+    driver.find_element_by_id("username").send_keys("Void-BOT")
+    driver.find_element_by_id ("password").send_keys("kallan1914")
+    driver.find_element_by_id("login_button").click()
 
-    #time.sleep(5)
-    #driver.execute_script('''window.open("https://onlinesequencer.net/","_blank");''')
-    #time.sleep(5)
-    #driver.execute_script('''window.open("https://onlinesequencer.net/forum/chat_frame.php","_blank");''')
-    #time.sleep(5)
+    time.sleep(4)
 
-    #driver.switch_to_window(driver.window_handles[1])
+    driver.execute_script('''window.open("https://onlinesequencer.net/","_blank");''')
+    print("New page, refer home.")
+    time.sleep(4)
+    driver.execute_script('''window.open("https://onlinesequencer.net/forum/chat_frame.php","_blank");''')
+    print("open chat tab!")
+    time.sleep(2)
+    print("Check if bot is in chat. Also window handle set to ^")
+    driver.switch_to_window(driver.window_handles[1])
 
-    #def GETSTAT():
-        #bsObj = BeautifulSoup(driver.page_source,'html.parser')
-        #container = bsObj.find('div', id='container') #for getting status
-        #status = re.findall(r'<div id="status">(.*?)</div>',str(container))
-        #return status
+    def GETSTAT():
+        bsObj = BeautifulSoup(driver.page_source,'html.parser')
+        container = bsObj.find('div', id='container') #for getting status
+        status = re.findall(r'<div id="status">(.*?)</div>',str(container))
+        return status
 
-    #for i in range(1, 20):
-        #time.sleep(5)
-        #stat = GETSTAT()
-        #print(stat)
+    for i in range(1, 9999):
+        time.sleep(5)
+        stat = GETSTAT()
+        print(stat)
 
 RUNMAIN()
 
