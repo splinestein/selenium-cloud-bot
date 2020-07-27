@@ -28,7 +28,7 @@ def RUNMAIN():
 
     ActionChains(driver).move_to_element(button).click(button).perform()
     driver.find_element_by_id("username").send_keys("Void-BOT")
-    driver.find_element_by_id ("password").send_keys("kallan1914")
+    driver.find_element_by_id ("password").send_keys("passgoeshere")
     driver.find_element_by_id("login_button").click()
 
     time.sleep(4)
